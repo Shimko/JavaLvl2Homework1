@@ -4,35 +4,38 @@ public class Robot implements Skills{
    private String name;
    private int runLimit;
    private int jumpLimit;
-   boolean obstaclePassed;
+   private boolean  performance;
+
 
    public Robot(String name, int runLimit, int jumpLimit) {
       this.name = name;
-      if(runLimit <=8000 && runLimit>0){
       this.runLimit = runLimit;
-      }
-      if(jumpLimit<=50 && jumpLimit>0) {
-         this.jumpLimit = jumpLimit;
-      }
+      this.jumpLimit = jumpLimit;
+
+   }
+
+   @Override
+   public boolean winObstacle() {
+      return performance;
    }
 
    @Override
    public void run(int distance) {
       if(runLimit>= distance){
-         obstaclePassed = true;
-         System.out.println("Робот " +name +" преодолел дистанцию "+distance + " см");
+         performance = true;
+         System.out.println("Робот "+ name + " удачно пробежал " +distance);
       }
-      obstaclePassed = false;
-      System.out.println("Робот " +name +" не смог преодолеть дистанцию "+distance + " см");
+      performance = false;
+      System.out.println("Робот "+ name + "не смог пробежать  " +distance);
    }
 
    @Override
    public void jump(int height) {
       if (jumpLimit>=height){
-         obstaclePassed = true;
-         System.out.println("Робот " +name +" перепрыгнул через стену высотой "+height + " см");
+         performance = true;
+         System.out.println("Робот "+ name + " удачно перепрыгнул через стену высотой  " + height);
       }
-      obstaclePassed = false;
-      System.out.println("Робот " +name +" не смог перепрыгнуть через стену высотой "+height + " см");
+      performance = false;
+      System.out.println("Робот "+ name + " не смог перепрыгнуть через стену высотой  " + height);
    }
 }

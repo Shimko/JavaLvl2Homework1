@@ -1,6 +1,6 @@
 package HomeworkLesson1;
 
-public class Racetrack extends Obstacle{
+public class Racetrack implements Obstacle{
     private int  distance;
 
     public Racetrack(int distance) {

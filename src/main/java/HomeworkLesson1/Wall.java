@@ -1,6 +1,6 @@
 package HomeworkLesson1;
 
-public class Wall extends Obstacle {
+public class Wall implements Obstacle{
     private int height;
 
     public Wall(int height) {
@@ -10,6 +10,5 @@ public class Wall extends Obstacle {
     @Override
     public void passingObstacle(Skills skills) {
         skills.jump(height);
-
     }
 }
