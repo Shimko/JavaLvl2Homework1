@@ -13,10 +13,13 @@ public class Contest {
                 new Wall(120),
                 new Racetrack(6000)
         };
-        for (int i = 0; i < team.length ; i++) {
-            for (int j = 0; j < obstacles.length ; j++) {
-                obstacles[j].passingObstacle(team[i]);
-                if (!team[i].winObstacle()) break;
+        for (int i = 0; i < obstacles.length ; i++) {
+            for (int j = 0; j < team.length ; j++) {
+
+                if (team[j].winObstacle()==true){
+                    obstacles[i].passingObstacle(team[j]);
+                }
+                else break;
             }
         }
     }

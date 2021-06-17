@@ -11,6 +11,7 @@ public class Human implements Skills{
         this.name = name;
         this.runLimit = runLimit;
         this.jumpLimit = jumpLimit;
+        this.performance = true;
     }
 
     @Override
@@ -21,7 +22,6 @@ public class Human implements Skills{
     @Override
     public void run(int distance) {
         if (runLimit >= distance) {
-            performance = true;
             System.out.println("Человек "+ name + " удачно пробежал " +distance);
         }
         performance = false;
@@ -32,7 +32,6 @@ public class Human implements Skills{
     @Override
     public void jump(int height) {
         if (jumpLimit>=height){
-            performance = true;
             System.out.println("Человек "+ name + " удачно перепрыгнул через стену высотой  " +height);
         }
         performance = false;
