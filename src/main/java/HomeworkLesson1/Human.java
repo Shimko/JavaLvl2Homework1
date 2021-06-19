@@ -13,30 +13,36 @@ public class Human implements Skills{
         this.name = name;
         this.runLimit = runLimit;
         this.jumpLimit = jumpLimit;
+        this.winObstacle = false;
 
     }
 
 
 
     @Override
-    public void run(int distance) {
-        if (runLimit >= distance) {
-            winObstacle = true;
-            System.out.println("Человек "+ name + " удачно пробежал " +distance);
+    public void run(Racetrack distance) {
+        if(winObstacle) {
+            if (runLimit >= distance.getDistance()) {
+                winObstacle = true;
+                System.out.println("Человек " + name + " удачно пробежал "+ distance);
+            }
+            else {winObstacle = false;
+            System.out.println("Человек " + name + "  не смог пробежать " + distance);
+            }
         }
-
-        System.out.println("Человек "+ name + "  не смог пробежать " +distance);
 
     }
 
     @Override
-    public void jump(int height) {
-        if (jumpLimit>=height){
-            winObstacle = true;
-            System.out.println("Человек "+ name + " удачно перепрыгнул через стену высотой  " +height);
+    public void jump(Wall height) {
+        if (jumpLimit >= height.getHeight()){
+            winObstacle = true;;
+            System.out.println("Человек "+ name + " удачно перепрыгнул через стену высотой  " + height.getHeight());
         }
-
-        System.out.println("Человек "+ name + " не смог перепрыгнуть через стену высотой  " +height);
+        else {
+            winObstacle = false;
+            System.out.println("Человек "+ name + " не смог перепрыгнуть через стену высотой  " +height);
+        }
     }
     @Override
     public boolean winObstacle() {

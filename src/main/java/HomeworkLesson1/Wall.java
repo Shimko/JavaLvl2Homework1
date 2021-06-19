@@ -9,6 +9,10 @@ public class Wall implements Obstacle{
 
     @Override
     public void passingObstacle(Skills skills) {
-        skills.jump(height);
+        skills.winObstacle();
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

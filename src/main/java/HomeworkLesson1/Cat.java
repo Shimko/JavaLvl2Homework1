@@ -12,6 +12,7 @@ public  class Cat implements Skills{
         this.name = name;
         this.runLimit = runLimit;
         this.jumpLimit = jumpLimit;
+        this.winObstacle = true;
 
 
     }
@@ -19,24 +20,31 @@ public  class Cat implements Skills{
 
 
     @Override
-    public void run(int distance) {
-        if(runLimit>= distance){
-            winObstacle = true;
+    public void run(Racetrack distance) {
+        if(runLimit>= distance.getDistance()){
+           winObstacle = true;;
             System.out.println("Кот "+ name + " удачно пробежал " +distance);
         }
-
+        else {
+            winObstacle = false;
         System.out.println("Кот "+ name + " не смог пробежать " +distance);
+        }
     }
 
     @Override
-    public void jump(int height) {
-        if (jumpLimit>=height){
-            winObstacle = true;
-            System.out.println("Кот "+ name + " удачно перепрыгнул через стену высотой  " +height);
+    public void jump(Wall height) {
+        if(winObstacle) {
+            if (jumpLimit >= height.getHeight()) {
+                winObstacle = true;
+                System.out.println("Кот " + name + " удачно перепрыгнул через стену высотой  " + height);
+            }
+            else {
+            winObstacle = false;
+            System.out.println("Кот " + name + " не смог перепрыгнуть  через стену высотой  " + height);
+            }
         }
-
-        System.out.println("Кот "+ name + " не смог перепрыгнуть  через стену высотой  " +height);
     }
+
     @Override
     public boolean winObstacle() {
         return winObstacle;
