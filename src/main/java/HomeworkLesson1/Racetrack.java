@@ -1,7 +1,7 @@
 package HomeworkLesson1;
 
 public class Racetrack implements Obstacle{
-    private int  distance;
+    private int distance;
 
     public Racetrack(int distance) {
         this.distance = distance;
@@ -9,6 +9,11 @@ public class Racetrack implements Obstacle{
 
     @Override
     public void passingObstacle(Skills skills) {
-        skills.run(distance);
+        skills.winObstacle();
+
+    }
+
+    public int getDistance() {
+        return distance;
     }
 }
